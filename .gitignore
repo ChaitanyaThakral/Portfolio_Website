@@ -1,0 +1,15 @@
+# Python virtual environments
+env/
+.venv/
+venv/
+ENV/
+
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+
+# Streamlit and system files
+.streamlit/
+.vscode/
+.DS_Store
+Thumbs.db
