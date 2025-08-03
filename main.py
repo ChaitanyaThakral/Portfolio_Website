@@ -6,11 +6,11 @@ st.set_page_config(
     layout="wide"
 )
 
-# Custom CSS for background and margins
+# Custom CSS for global styling + responsive About Me flexbox
 st.markdown("""
     <style>
         .stApp {
-            background-color: white;
+            background-color: #ffffff;
         }
 
         .block-container {
@@ -24,43 +24,84 @@ st.markdown("""
             background-color: white;
         }
 
-        /* Mobile responsive styles */
+        /* --- FLEXBOX for About Me --- */
+        .about-me-flexbox {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        .about-me-content {
+            flex: 1.6;
+        }
+        .about-me-photo {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            min-width: 120px;
+            max-width: 280px;
+        }
+        .about-me-photo img {
+            max-width: 250px;
+            border-radius: 18px;
+            margin: auto;
+            display: block;
+        }
+        @media (max-width: 900px) {
+            .about-me-flexbox {
+                gap: 1.2rem;
+            }
+            .about-me-content {
+                font-size: 16px;
+            }
+            .about-me-photo img {
+                max-width: 150px;
+            }
+        }
+        @media (max-width: 600px) {
+            .about-me-flexbox {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 0.7rem;
+            }
+            .about-me-photo img {
+                max-width: 98px;
+            }
+            .about-me-content {
+                font-size: 13px;
+            }
+        }
+
+        /* Other responsiveness */
         @media (max-width: 768px) {
             .block-container {
                 padding: 1rem 0.5rem 4rem 0.5rem;
             }
-            
-            /* Make text more readable on mobile */
             .stMarkdown p {
                 font-size: 16px !important;
                 line-height: 1.6;
             }
-            
-            /* Adjust headers for mobile */
             .stMarkdown h1 {
                 font-size: 1.8rem !important;
             }
-            
             .stMarkdown h2 {
                 font-size: 1.4rem !important;
             }
         }
-
-        /* Tablet responsive styles */
         @media (min-width: 769px) and (max-width: 1024px) {
             .block-container {
                 padding: 2rem 2rem 6rem 2rem;
             }
         }
-
-        /* Desktop styles */
         @media (min-width: 1025px) {
             .block-container {
                 padding: 3rem 4rem 8rem 4rem;
             }
         }
 
-        /* Custom styling for form submit button */
         .stForm > div > div > div > div > button {
             background-color: rgb(34, 133, 41) !important;
             color: white !important;
@@ -70,52 +111,52 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+with open("profile_photo.jpg", "rb") as image_file:
+    encoded_img = base64.b64encode(image_file.read()).decode()
+
+# --- About Me Section ---
+about_me_html = f"""
+<div class="about-me-flexbox">
+    <div class="about-me-content">
+        <p>
+        My name is Chaitanya Thakral, and I am a 20-year-old undergraduate student at the University of British Columbia (UBC) in Vancouver.
+        I am currently in my third year, pursuing a Bachelor of Science in Statistics.
+        </p>
+        <p>
+        From a young age, I have been fascinated by how computers operate behind the scenes. This early curiosity, combined with a strong interest in mathematics,
+        led me to explore programming and data analysis. Over time, I discovered that I not only enjoy building projects, but I also want to create something meaningful.
+        Whether it's a project, an app, or a data model, my goal is to apply my knowledge to make a real-world impact.
+        </p>
+        <p>
+        Outside of my studies, I enjoy swimming and working out at the gym. Staying physically active helps me maintain focus, think clearly, and achieve balance
+        in both my personal life and my work.
+        </p>
+    </div>
+    <div class="about-me-photo">
+        <img src="data:image/jpeg;base64,{encoded_img}" alt="Profile Photo">
+    </div>
+</div>
+"""
+
 st.header("About Me", divider=True)
+st.markdown(about_me_html, unsafe_allow_html=True)
 
-# Responsive layout for About Me section
-col1, col2 = st.columns([1, 1])
-
-with col1:
-    st.markdown("""
-    <p style='font-size:18px; line-height: 1.6;'>
-    My name is Chaitanya Thakral, and I am a 20-year-old undergraduate student at the University of British Columbia (UBC) in Vancouver.
-    I am currently in my third year, pursuing a Bachelor of Science in Statistics.
-    </p>
-
-    <p style='font-size:18px; line-height: 1.6;'>
-    From a young age, I have been fascinated by how computers operate behind the scenes. This early curiosity, combined with a strong interest in mathematics,
-    led me to explore programming and data analysis. Over time, I discovered that I not only enjoy building projects, but I also want to create something meaningful.
-    Whether it's a project, an app, or a data model, my goal is to apply my knowledge to make a real-world impact.
-    </p>
-
-    <p style='font-size:18px; line-height: 1.6;'>
-    Outside of my studies, I enjoy swimming and working out at the gym. Staying physically active helps me maintain focus, think clearly, and achieve balance
-    in both my personal life and my work.
-    </p>
-    """, unsafe_allow_html=True)
-
-with col2:
-    st.image("profile_photo.jpg", width=300)
-
-st.header("Areas of Interest & Personal Traits",divider=True)
+# --- Rest of your sections remain largely unchanged, here is an example for "Areas of Interest" ---
+st.header("Areas of Interest & Personal Traits", divider=True)
 st.markdown("""
-<div style='display: flex; flex-wrap: wrap; gap: 3rem; margin-top: 1rem;'>
-    <span style='background-color:#f0f2f6; padding:8px 16px; border-radius:20px; font-size:16px;'>Swift Learner</span>
-    <span style='background-color:#f0f2f6; padding:8px 16px; border-radius:20px; font-size:16px;'>Diligent</span>
-    <span style='background-color:#f0f2f6; padding:8px 16px; border-radius:20px; font-size:16px;'>Team Player</span>
-    <span style='background-color:#f0f2f6; padding:8px 16px; border-radius:20px; font-size:16px;'>Ambitious</span>
-    <span style='background-color:#f0f2f6; padding:8px 16px; border-radius:20px; font-size:16px;'>Passionate</span>
-    
+<div style="display: flex; flex-wrap: wrap; gap: 3rem; margin-top: 1rem;">
+    <span style="background-color:#f0f2f6; padding:8px 16px; border-radius:20px; font-size:16px;">Swift Learner</span>
+    <span style="background-color:#f0f2f6; padding:8px 16px; border-radius:20px; font-size:16px;">Diligent</span>
+    <span style="background-color:#f0f2f6; padding:8px 16px; border-radius:20px; font-size:16px;">Team Player</span>
+    <span style="background-color:#f0f2f6; padding:8px 16px; border-radius:20px; font-size:16px;">Ambitious</span>
+    <span style="background-color:#f0f2f6; padding:8px 16px; border-radius:20px; font-size:16px;">Passionate</span>
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown("""<br>
-            <br>""", unsafe_allow_html=True)
-
+st.markdown("""<br><br>""", unsafe_allow_html=True)
 
 st.header("Resume",divider=True)
 st.write("You can view or download my resume below:")
-
 
 with open("Chaitanya_Thakral_Resume.docx", "rb") as f:
     resume_data = f.read()
@@ -132,13 +173,11 @@ st.markdown(f"""
     </a>
 </div>
 """, unsafe_allow_html=True)
-
 st.markdown("""<br> <br>""", unsafe_allow_html=True)
 
 st.header("Acquired skills and competencies",divider = True)
 
 st.markdown("**Programming Languages**")
-
 st.markdown("""
 <div style='display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 0.5rem;'>
     <span style='background-color:#f0f2f6; padding:6px 12px; border-radius:16px;'>Python</span>
@@ -149,7 +188,6 @@ st.markdown("""
     <span style='background-color:#f0f2f6; padding:6px 12px; border-radius:16px;'>DrRacket</span>
 </div>
 """, unsafe_allow_html=True)
-
 st.markdown("""<br> """, unsafe_allow_html=True)
 
 st.markdown("**Tools & Technologies**")
@@ -188,9 +226,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 st.markdown("""<br><br> """, unsafe_allow_html=True)
 
-st.header("Portfolio Projects",divider= True)
-
-# Responsive layout for Portfolio Projects section
+st.header("Portfolio Projects", divider= True)
+# Use regular st.columns for Portfolio Projects (or apply flexbox similarly if you want the same behavior there)
 col1, col2 = st.columns([1, 1])
 
 with col1:
@@ -230,14 +267,12 @@ with col2:
         </iframe>
     </div>
     """
-    
     st.markdown(video_html, unsafe_allow_html=True)
 
 st.markdown(""" <br>
             <p style='font-size:20px; margin-bottom: 0.5rem;'>
             <strong>📁 View Source Code on GitHub:</strong>
             </p>""",unsafe_allow_html=True)
-            
 st.markdown(f"""
 <div style='display: flex; margin-top: 0.5rem;'>
     <a href="https://github.com/ChaitanyaThakral/Itinerary-Planner" 
@@ -252,12 +287,9 @@ st.markdown(f"""
     </a>
 </div>
 """, unsafe_allow_html=True)
-
 st.markdown("""<br> <br>""", unsafe_allow_html=True)
 
-st.header("Experience",divider=True)
-
-# Responsive layout for Experience section
+st.header("Experience", divider=True)
 col1, col2 = st.columns([2, 1])
 
 with col1:
@@ -293,37 +325,25 @@ st.markdown(
     • <strong>Information Extraction with Document AI:</strong> Assessed the effectiveness of Mistral's Document AI for extracting key cheque details—such as account name, number, and IFSC code—by conducting thorough evaluations and assisting the team in making informed decisions.
     </div>
     """,unsafe_allow_html=True)
-
 st.markdown("""<br> """, unsafe_allow_html=True)
 
 st.header("Get In Touch With Me!",divider = True)
 
-# Create the contact form using Streamlit components
-with st.form("contact_form"):
-    st.markdown("### Send me a message")
-    
-    col1, col2 = st.columns([1, 1])
-    
-    with col1:
-        name = st.text_input("Name", placeholder="Enter your name")
-    
-    with col2:
-        email = st.text_input("Email", placeholder="Enter your email address")
-    
-    message = st.text_area("Message", placeholder="Enter your message", height=120)
-    
-    submitted = st.form_submit_button("Send Message", use_container_width=True, type="primary")
-    
-    if submitted:
-        if name and email and message:
-            st.success("✅ Thank you for your message! I'll get back to you soon.")
-            st.balloons()
-            # Here you can add code to actually send the email
-            # For example, using smtplib, SendGrid, or another email service
-        else:
-            st.error("❌ Please fill in all fields.")
+# Contact Form
+contact_form = """
+    <form action="https://formsubmit.co/cthakral6@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://your-portfolio-page-url.com/thankyou">
+        <input type="text" name="name" placeholder="Enter your name" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+        <input type="email" name="email" placeholder="Enter your email address" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+        <textarea name="message" placeholder="Enter your message" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; height: 120px; resize: vertical;"></textarea>
+        <button type="submit" style="width: 100%; padding: 10px; background-color: rgb(34, 133, 41); color: white; border: none; border-radius: 5px; cursor: pointer;">Send Message</button>
+    </form>
+"""
 
-# Social media links
+st.markdown(contact_form, unsafe_allow_html=True)
+
+# Social Media Links
 st.markdown("""
 <div style="display: flex; justify-content: center; gap: 30px; margin-top: 30px;">
     <a href="mailto:cthakral6@gmail.com" style="text-decoration: none; color: #333;" title="Email">
@@ -343,4 +363,3 @@ st.markdown("""
     </a>
 </div>
 """, unsafe_allow_html=True)
-
