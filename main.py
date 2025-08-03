@@ -6,7 +6,6 @@ st.set_page_config(
     layout="wide"
 )
 
-# Custom CSS for global styling + responsive About Me flexbox
 st.markdown("""
     <style>
         .stApp {
@@ -24,7 +23,6 @@ st.markdown("""
             background-color: white;
         }
 
-        /* --- FLEXBOX for About Me --- */
         .about-me-flexbox {
             display: flex;
             flex-direction: row;
@@ -141,7 +139,7 @@ about_me_html = f"""
 st.header("About Me", divider=True)
 st.markdown(about_me_html, unsafe_allow_html=True)
 
-# --- Rest of your sections remain largely unchanged, here is an example for "Areas of Interest" ---
+
 st.header("Areas of Interest & Personal Traits", divider=True)
 st.markdown("""
 <div style="display: flex; flex-wrap: wrap; gap: 3rem; margin-top: 1rem;">
@@ -227,7 +225,7 @@ st.markdown("""
 st.markdown("""<br><br> """, unsafe_allow_html=True)
 
 st.header("Portfolio Projects", divider= True)
-# Use regular st.columns for Portfolio Projects (or apply flexbox similarly if you want the same behavior there)
+
 col1, col2 = st.columns([1, 1])
 
 with col1:
@@ -329,7 +327,6 @@ st.markdown("""<br> """, unsafe_allow_html=True)
 
 st.header("Get In Touch With Me!",divider = True)
 
-# Contact Form
 contact_form = """
     <form action="https://formsubmit.co/cthakral6@gmail.com" method="POST">
         <input type="hidden" name="_captcha" value="false">
@@ -343,7 +340,6 @@ contact_form = """
 
 st.markdown(contact_form, unsafe_allow_html=True)
 
-# Social Media Links
 st.markdown("""
 <div style="display: flex; justify-content: center; gap: 30px; margin-top: 30px;">
     <a href="mailto:cthakral6@gmail.com" style="text-decoration: none; color: #333;" title="Email">
