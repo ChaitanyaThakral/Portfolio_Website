@@ -327,18 +327,18 @@ st.markdown("""<br> """, unsafe_allow_html=True)
 
 st.header("Get In Touch With Me!",divider = True)
 
-contact_form = """
-    <form action="https://formsubmit.co/cthakral6@gmail.com" method="POST">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://your-portfolio-page-url.com/thankyou">
-        <input type="text" name="name" placeholder="Enter your name" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
-        <input type="email" name="email" placeholder="Enter your email address" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
-        <textarea name="message" placeholder="Enter your message" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; height: 120px; resize: vertical;"></textarea>
-        <button type="submit" style="width: 100%; padding: 10px; background-color: rgb(34, 133, 41); color: white; border: none; border-radius: 5px; cursor: pointer;">Send Message</button>
-    </form>
-"""
+# contact_form = """
+#     <form action="https://formsubmit.co/cthakral6@gmail.com" method="POST">
+#         <input type="hidden" name="_captcha" value="false">
+#         <input type="hidden" name="_next" value="https://your-portfolio-page-url.com/thankyou">
+#         <input type="text" name="name" placeholder="Enter your name" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+#         <input type="email" name="email" placeholder="Enter your email address" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+#         <textarea name="message" placeholder="Enter your message" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; height: 120px; resize: vertical;"></textarea>
+#         <button type="submit" style="width: 100%; padding: 10px; background-color: rgb(34, 133, 41); color: white; border: none; border-radius: 5px; cursor: pointer;">Send Message</button>
+#     </form>
+#     """
 
-st.markdown(contact_form, unsafe_allow_html=True)
+# st.markdown(contact_form, unsafe_allow_html=True)
 
 st.markdown("""
 <div style="display: flex; justify-content: center; gap: 30px; margin-top: 30px;">
